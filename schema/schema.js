@@ -221,10 +221,10 @@ const Mutation = new GraphQLObjectType({
                 placeId: {type: GraphQLID}
             },
             resolve(parent, args, req){
-                if(!req.isAuth) {
+                /*if(!req.isAuth) {
                     throw new Error('Unauthenticated!');
                   }
-            
+            */
                 let item = new Item({
                     name: args.name,
                     description: args.description,
@@ -252,9 +252,9 @@ const Mutation = new GraphQLObjectType({
                  itemId: { type: GraphQLString },
             },
             resolve(parent, args, req){
-                if(!req.isAuth) {
+                /*if(!req.isAuth) {
                     throw new Error('Unauthenticated!');
-                  }                
+                  }    */            
                 let itemImages = new ItemImages({
                     image1: args.image1,
                     altr1: args.altr1,
@@ -284,9 +284,9 @@ const Mutation = new GraphQLObjectType({
                 map: { type: GraphQLString} 
            },
            resolve(parent, args, req){
-            if(!req.isAuth) {
+           /* if(!req.isAuth) {
                 throw new Error('Unauthenticated!');
-              }
+              }*/
                 let place = new Place({
                     name: args.name,
                     address: args.address,
@@ -310,9 +310,9 @@ const Mutation = new GraphQLObjectType({
                 placeId: { type: GraphQLString },
            },
            resolve(parent, args, req){
-            if(!req.isAuth) {
+           /* if(!req.isAuth) {
                 throw new Error('Unauthenticated!');
-              }                
+              }     */           
             let placeImages = new PlaceImages({
                     image1: args.image1,
                     altr1: args.altr1,
@@ -333,9 +333,9 @@ const Mutation = new GraphQLObjectType({
                 catId: { type: GraphQLString },
             },
             resolve(parent, args, req){
-                if(!req.isAuth) {
+               /* if(!req.isAuth) {
                     throw new Error('Unauthenticated!');
-                  }
+                  }*/
                 let placeCat = new PlaceCat({
                     rank: args.rank,
                     placeId: args.placeId,
@@ -351,9 +351,9 @@ const Mutation = new GraphQLObjectType({
                 name: { type: GraphQLString }
             },
             resolve(parent, args, req){
-                if(!req.isAuth) {
+               /* if(!req.isAuth) {
                     throw new Error('Unauthenticated!');
-                  }
+                  } */
                 let category = new Category({
                     name: args.name,
                     
