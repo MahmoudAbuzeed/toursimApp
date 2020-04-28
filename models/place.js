@@ -13,11 +13,11 @@ const placeSchema = new Schema({
         required: true
     },
     dates: {
-        type: Date,
+        type: String,
 
     },
     fees: {
-        type: Number,
+        type: String,
         required: true
         
     },

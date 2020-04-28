@@ -1,0 +1,48 @@
+.marginTop {
+
+    margin-top: 140px;
+}
+
+   
+    
+
+.color span {
+    color:rgb(221, 192, 28);
+}
+.color  {
+
+    background-color: #343A40 ;
+}
+
+.btnCenter {
+
+    align-items: center;
+}
+
+.marginLeft {
+    margin-left: 200px;
+}
+.btnMargin {
+    margin-top: 30px;   
+}
+
+
+
+.monument span {
+    color:rgb(221, 192, 28);
+}
+.dark {
+
+    background-color: #343A40 ;
+}
+
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    
+}

@@ -78,8 +78,6 @@ const RootQuery = new GraphQLObjectType({
 
         // ---------- Return User and all Users ---------- //
 
-        
-
 
         user: {
             type: UserType,
@@ -95,6 +93,8 @@ const RootQuery = new GraphQLObjectType({
                 return User.find({});
             }
         },
+
+        
         // ---------- Return Item and all Items ---------- //
         item: {
             type: ItemType,
@@ -217,7 +217,7 @@ const Mutation = new GraphQLObjectType({
                 description: { type: GraphQLString },
                 voiceNote: { type: GraphQLString},
                 qrImage: { type: GraphQLString},
-                noOfScans: { type: GraphQLInt},
+                noOfScans: { type: GraphQLString},
                 placeId: {type: GraphQLID}
             },
             resolve(parent, args, req){
@@ -233,7 +233,7 @@ const Mutation = new GraphQLObjectType({
                     noOfScans: args.noOfScans,
                     placeId: args.placeId
                 });
-                return item.save();
+                return item.save(); 
             }
         },
        addItemImages: {
@@ -279,7 +279,7 @@ const Mutation = new GraphQLObjectType({
                 name: { type: GraphQLString },
                 address: { type: GraphQLString },
                 dates: { type: GraphQLString },
-                fees: { type: GraphQLInt},
+                fees: { type: GraphQLString},
                 image: { type: GraphQLString },
                 map: { type: GraphQLString} 
            },
@@ -307,7 +307,7 @@ const Mutation = new GraphQLObjectType({
                 altr2: { type: GraphQLString },
                 image3: { type: GraphQLString },
                 altr3: { type: GraphQLString },
-                placeId: { type: GraphQLString },
+                placeId: { type: GraphQLID },
            },
            resolve(parent, args, req){
            /* if(!req.isAuth) {
@@ -328,9 +328,9 @@ const Mutation = new GraphQLObjectType({
         addPlaceCat: {
             type: PlaceCatType,
             args: {
-                rank: { type: GraphQLInt },
-                placeId: { type: GraphQLString },
-                catId: { type: GraphQLString },
+                rank: { type: GraphQLString },
+                placeId: { type: GraphQLID },
+                catId: { type: GraphQLID },
             },
             resolve(parent, args, req){
                /* if(!req.isAuth) {
@@ -361,6 +361,41 @@ const Mutation = new GraphQLObjectType({
                 return category.save();
             }
         },
+
+        deleteCategory: {
+            type: CategoryType,
+            args: {
+                id: { type: GraphQLID }
+            },
+            resolve(parent, args, req){
+               /* if(!req.isAuth) {
+                    throw new Error('Unauthenticated!');
+                    
+                  } */
+                  return Category.findByIdAndDelete(args.id); 
+            }
+        },
+
+
+        updateCategory: {
+            type: CategoryType,
+            args: {
+                id: { type: GraphQLID },
+                name: { type: GraphQLString }
+            },
+            resolve(parent, args, req){
+               /* if(!req.isAuth) {
+                    throw new Error('Unauthenticated!');
+                    
+                  } */
+                  return Category.findByIdAndUpdate({"_id" : args.id},
+                    { "$set":{name: args.name}},
+                    {"new": true} 
+                     ); 
+            }
+        },
+
+      
         
     }
 });

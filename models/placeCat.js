@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const placeCatSchema = new Schema({
    
     rank: {
-        type: Number,
+        type: String,
         
     },
     placeId: {
